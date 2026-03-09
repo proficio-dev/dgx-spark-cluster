@@ -1,5 +1,13 @@
 # vLLM + Ray inference stack for DGX Spark cluster
-# Python 3.12 / aarch64 / CUDA 12.6+
-vllm>=0.7.0
-ray[default]>=2.40.0
-torch>=2.5.0
+# Python 3.12 / aarch64 / CUDA 12.8 (pip wheels)
+#
+# NOTE: torch must be installed from the cu128 index for aarch64 CUDA support.
+# The install.sh script handles this automatically.
+
+# --- Core (installed via --extra-index-url for CUDA aarch64 wheel) ---
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch>=2.10.0
+
+# --- Inference & orchestration ---
+vllm>=0.17.0
+ray[default]>=2.54.0
